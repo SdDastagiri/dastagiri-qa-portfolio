@@ -160,7 +160,7 @@ export const projects = [
     links: [
       {
         label: 'Explore TCB Platform',
-        url: 'https://try.thecouponbureau.org/',
+        url: 'https://try.thecouponbureau.org/developer/api_docs',
       },
     ],
   },

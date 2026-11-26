@@ -10,6 +10,7 @@ import Experience from './sections/Experience'
 import Education from './sections/Education'
 import Contact from './sections/Contact'
 import { profile } from './data'
+import PortfolioChatbot from './components/PortfolioChatbot'
 
 export default function App() {
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function App() {
       </main>
       <footer className="footer"><div className="container footer-inner"><a className="brand" href="#home"><span className="brand-mark">SD</span><span>Sayyad Dastagiri<span className="brand-dot">.</span></span></a><p>Designed with purpose. Built around quality.</p><span>© {new Date().getFullYear()} {profile.name}. All rights reserved.</span></div></footer>
       <a className="back-top" href="#home" aria-label="Back to top"><ArrowUp size={17} /></a>
+      <PortfolioChatbot />
     </>
   )
 }
