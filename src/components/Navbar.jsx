@@ -13,7 +13,7 @@ export default function Navbar() {
     <header className="navbar">
       <div className="nav-inner container">
         <a className="brand" href="#home" onClick={() => setOpen(false)} aria-label={`${profile.name}, home`}>
-          <span className="brand-mark">SD</span><span>SD<span className="brand-dot">.</span></span>
+          <span className="brand-mark">SD</span>
         </a>
         <nav className={`nav-links ${open ? 'is-open' : ''}`} aria-label="Main navigation">
           {links.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>{label}</a>)}

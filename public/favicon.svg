@@ -1,0 +1,22 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect
+    x="1" y="1"
+    width="62" height="62"
+    rx="14"
+    fill="#080E19"
+    stroke="#54D8ED"
+    stroke-width="2"
+  />
+
+  <text
+    x="31"
+    y="43"
+    text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="30"
+    font-weight="900"
+    letter-spacing="-2"
+    fill="#FFFFFF"
+  >SD<tspan fill="#54D8ED">.</tspan></text>
+</svg>

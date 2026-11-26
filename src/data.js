@@ -2,6 +2,8 @@ export const profile = {
   name: 'Sayyad Dastagiri',
   title: 'QA Automation Engineer',
   email: 'sayyaddastagirisd@gmail.com',
+  phone: '+919398512478',
+  phoneDisplay: '+91 9398512478',
   linkedin: 'https://www.linkedin.com/in/sayyad-dastagiri/',
   github: 'https://github.com/SdDastagiri',
   resume: 'https://drive.google.com/file/d/1ocw2KyjzMh9NTCzZOw7IKTRkZbN0gWZS/view?usp=sharing',
