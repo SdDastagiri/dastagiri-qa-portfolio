@@ -1,3 +1,4 @@
+
 export const profile = {
   name: 'Sayyad Dastagiri',
   title: 'QA Automation Engineer',
@@ -10,98 +11,291 @@ export const profile = {
 }
 
 export const achievements = [
-  { value: '4+', label: 'Years in QA', detail: 'Quality engineering experience' },
-  { value: '31+', label: 'POS-SDK offer types', detail: 'Business-rule coverage' },
-  { value: '500+', label: 'Test cases', detail: 'Created and contributed to' },
-  { value: '300+', label: 'Defects reported', detail: 'Across testing activities' },
+  {
+    value: '4+',
+    label: 'Years in QA',
+    detail: 'Quality engineering experience',
+  },
+  {
+    value: '31+',
+    label: 'POS-SDK offer types',
+    detail: 'Business-rule coverage',
+  },
+  {
+    value: '500+',
+    label: 'Test cases',
+    detail: 'Created and contributed to',
+  },
+  {
+    value: '300+',
+    label: 'Defects reported',
+    detail: 'Across testing activities',
+  },
 ]
 
 export const skillGroups = [
-  { icon: 'Code2', title: 'Programming', skills: ['Java', 'JavaScript', 'Node.js'] },
-  { icon: 'Workflow', title: 'Automation', skills: ['Selenium WebDriver', 'Appium', 'TestNG', 'Maven', 'Page Object Model'] },
-  { icon: 'Braces', title: 'API Testing', skills: ['REST Assured', 'Postman', 'API validation', 'Request / response validation'] },
-  { icon: 'ShieldCheck', title: 'Testing', skills: ['Functional', 'Sanity', 'Smoke', 'Regression', 'Integration', 'System', 'End-to-End', 'Cross-browser', 'Mobile'] },
-  { icon: 'MonitorSmartphone', title: 'Platforms', skills: ['Web', 'PWA', 'Android', 'iOS', 'POS SDK'] },
-  { icon: 'Cloud', title: 'Cloud & Database', skills: ['AWS CloudWatch', 'DynamoDB'] },
-  { icon: 'Wrench', title: 'Tools', skills: ['Git', 'GitHub', 'TestRail', 'Monday.com', 'JIRA', 'Allure'] },
-  { icon: 'Layers3', title: 'Practices', skills: ['TestNG', 'Maven', 'POM', 'Agile', 'SDLC', 'STLC'] },
+  {
+    icon: 'Code2',
+    title: 'Programming',
+    skills: ['Java', 'JavaScript', 'Node.js'],
+  },
+  {
+    icon: 'Workflow',
+    title: 'Web Automation',
+    skills: [
+      'Selenium WebDriver',
+      'TestNG',
+      'Maven',
+      'Page Object Model',
+    ],
+  },
+  {
+    icon: 'Smartphone',
+    title: 'Mobile Automation',
+    skills: ['Appium', 'Android', 'iOS'],
+  },
+  {
+    icon: 'Braces',
+    title: 'API Testing',
+    skills: [
+      'REST Assured',
+      'Postman',
+      'API validation',
+      'Request / response validation',
+    ],
+  },
+  {
+    icon: 'ShieldCheck',
+    title: 'Testing',
+    skills: [
+      'Functional',
+      'Sanity',
+      'Smoke',
+      'Regression',
+      'Integration',
+      'System',
+      'End-to-End',
+      'Cross-browser',
+    ],
+  },
+  {
+    icon: 'MonitorSmartphone',
+    title: 'Application Testing',
+    skills: [
+      'Web Applications',
+      'PWA',
+      'POS Applications'
+    ]
+  },
+  {
+    icon: 'Cloud',
+    title: 'Cloud & Database',
+    skills: [
+      'AWS CloudWatch',
+      'DynamoDB',
+      'OpenSearch',
+    ],
+  },
+  {
+    icon: 'Wrench',
+    title: 'Tools',
+    skills: [
+      'Git',
+      'GitHub',
+      'TestRail',
+      'Monday.com',
+      'JIRA',
+      'Allure',
+    ],
+  },
+  {
+    icon: 'Layers3',
+    title: 'Practices',
+    skills: [
+      'Agile',
+      'SDLC',
+      'STLC',
+      'BDD / Cucumber',
+    ],
+  },
 ]
+
 
 export const projects = [
   {
     number: '01',
     name: 'The Coupon Bureau',
     type: 'Digital coupon platform',
-    summary: 'Quality assurance for a centralized digital coupon platform based on GS1 AI 8112 Universal Coupons.',
+    summary:
+      'Quality assurance and automation for a centralized digital coupon platform based on GS1 AI 8112 Universal Coupons.',
+
     contributions: [
-      'Built and maintained API automation coverage using Java and REST Assured.',
-      'Validated end-to-end API workflows, including positive, negative, boundary, and complex scenarios.',
-      'Performed backend data validation with DynamoDB and investigated application behaviour through AWS CloudWatch.',
-      'Supported regression, release validation, and defect investigation.',
+      'Developed and maintained API automation suites using Java and REST Assured, covering positive, negative, boundary, and complex scenarios.',
+
+      'Executed scheduled automated test runs using cron jobs and shell scripts for daily platform validation.',
+
+      'Performed daily sanity testing covering 75+ critical use cases and monitored execution results.',
+
+      'Executed comprehensive regression testing covering 1,100+ use cases before production releases.',
+
+      'Monitored TCB platform dashboards, including coupon deposits and redemptions, to identify data inconsistencies and unexpected behaviour.',
+
+      'Investigated application issues using AWS CloudWatch logs, DynamoDB, and OpenSearch for backend validation and troubleshooting.',
+
+      'Managed test cases in TestRail, tracked defects, and collaborated with development teams on issue resolution and release validation.',
     ],
-    stack: ['Java', 'REST Assured', 'TestNG', 'AWS CloudWatch', 'DynamoDB', 'TestRail'],
+
+    stack: [
+      'Java',
+      'REST Assured',
+      'TestNG',
+      'Shell Scripting',
+      'Cron Jobs',
+      'AWS CloudWatch',
+      'DynamoDB',
+      'OpenSearch',
+      'TestRail',
+    ],
+
+    links: [
+      {
+        label: 'Explore TCB Platform',
+        url: 'https://try.thecouponbureau.org/',
+      },
+    ],
   },
+
   {
     number: '02',
     name: 'POS-SDK',
     type: 'Retail point-of-sale integration',
-    summary: 'A product integrated with retailer POS systems to validate basket items and serialized coupons against locally available offer and validation data.',
+
+    summary:
+      'Quality engineering for Java and JavaScript POS validation libraries that help retailers validate basket items and serialized coupons against offer requirements.',
+
     contributions: [
-      'Worked across 31+ TCB offer types and contributed to a suite of 500+ test cases.',
-      'Validated coupon validation, redemption, rollback, and business rules.',
-      'Designed positive, negative, boundary, and complex corner-case scenarios.',
-      'Prepared client-specific basket and coupon test data; checked expected versus actual results.',
-      'Worked with Excel-based input/output validation and HTML reports.',
+      'Worked across 31+ TCB offer types and contributed to a comprehensive suite of 500+ test cases.',
+
+      'Validated coupon eligibility, basket requirements, serialized coupon validation, redemption, and rollback scenarios.',
+
+      'Designed and executed positive, negative, boundary, and complex corner-case scenarios.',
+
+      'Prepared client-specific basket and coupon test data and validated expected versus actual results.',
+
+      'Developed and executed JavaScript and Java-based test scenarios for POS validation workflows.',
+
+      'Performed Excel-based input/output validation and analyzed HTML automation reports.',
+
+      'Identified business-rule defects, verified fixes, and supported regression testing.',
     ],
-    stack: ['Java', 'REST Assured', 'API Testing', 'TestNG', 'Excel validation'],
+
+    stack: [
+      'Java',
+      'JavaScript',
+      'REST Assured',
+      'TestNG',
+      'POS Validation',
+      'Excel Validation',
+    ],
+
+    links: [
+      {
+        label: 'JavaScript SDK (npm)',
+        url: 'https://www.npmjs.com/package/pos-validation-sdk',
+      },
+      {
+        label: 'Java SDK (GitHub)',
+        url: 'https://github.com/TheCouponBureau-org/basket-validation-function',
+      },
+    ],
   },
+
   {
     number: '03',
     name: 'GITSY',
     type: 'Coupon distribution & consumer wallet',
-    summary: 'A coupon distribution and consumer wallet application spanning web, PWA, Android, and iOS platforms.',
+
+    summary:
+      'Quality assurance for a coupon distribution and consumer wallet application spanning Web, PWA, Android, and iOS platforms.',
+
     contributions: [
-      'Automated web UI flows using Java, Selenium WebDriver, and Page Object Model.',
-      'Performed mobile testing and automation using Appium.',
+      'Automated web UI workflows using Java, Selenium WebDriver, and Page Object Model.',
+
+      'Performed mobile testing and automation using Appium for Android and iOS applications.',
+
       'Validated coupon distribution, consumer wallet, and QR/barcode-based POS workflows.',
+
       'Executed functional, regression, and compatibility testing across supported platforms.',
+
+      'Identified, reported, tracked, and verified defects through resolution.',
     ],
-    stack: ['Java', 'Selenium WebDriver', 'Appium', 'POM', 'Web', 'PWA', 'Android', 'iOS'],
+
+    stack: [
+      'Java',
+      'Selenium WebDriver',
+      'Appium',
+      'POM',
+      'Web',
+      'PWA',
+      'Android',
+      'iOS',
+    ],
   },
 ]
+
 
 export const experience = [
   {
     company: 'The Coupon Bureau (TCB)',
     role: 'Quality Assurance Engineer',
-    period: 'Professional experience',
+    period: 'March 2024 – September 2026',
     points: [
-      'API automation using Java and REST Assured.',
-      'Functional, sanity, regression, and end-to-end testing.',
-      'POS-SDK testing and coupon business workflow validation.',
-      'AWS CloudWatch log analysis and DynamoDB backend data validation.',
-      'TestRail test management, defect tracking using Monday.com, and release reporting.',
-      'Customer issue investigation, troubleshooting, and release validation.',
+      'Developed and maintained API automation suites using Java and REST Assured.',
+      'Executed scheduled daily sanity testing covering 75+ critical use cases using Cron jobs and Shell scripts.',
+      'Performed comprehensive regression testing covering 1,100+ use cases before production releases.',
+      'Monitored TCB dashboards, including coupon deposits and redemptions, to identify data inconsistencies.',
+      'Performed backend data validation using DynamoDB and OpenSearch and investigated application issues through AWS CloudWatch.',
+      'Managed test cases in TestRail, tracked defects using Monday.com, and supported release validation.',
+      'Investigated customer-reported issues and collaborated with development teams on resolution.',
     ],
   },
   {
     company: 'Apeksh InfoTech Pvt. Ltd.',
     role: 'Software Engineer (QE)',
-    period: 'Project: GITSY',
-    points: [
-      'Web application and PWA testing, plus Android and iOS application testing.',
-      'Web UI automation using Java and Selenium WebDriver; mobile automation using Appium.',
-      'Implemented Page Object Model practices for web automation.',
-      'Tested QR code and barcode-based coupon workflows with functional, regression, and compatibility coverage.',
+    period: 'August 2022 – February 2024',
+
+    projects: [
+      {
+        name: 'The Coupon Bureau (TCB)',
+        period: 'August 2022 – December 2022',
+        points: [
+          'Performed functional testing of offer creation, coupon clipping, bundling, and redemption workflows.',
+          'Identified, reported, and tracked defects; collaborated with developers to verify fixes.',
+        ],
+      },
+      {
+        name: 'GITSY',
+        period: 'January 2023 – February 2024',
+        points: [
+          'Performed functional testing across Web, PWA, Android, and iOS applications.',
+          'Developed web UI automation using Java, Selenium WebDriver, and Page Object Model.',
+          'Developed mobile automation using Appium for Android and iOS applications.',
+          'Validated QR/barcode-based coupon distribution, consumer wallet, and POS workflows.',
+          'Executed regression and cross-platform compatibility testing.',
+        ],
+      },
     ],
   },
   {
     company: 'BHEL, Hyderabad',
     role: 'Graduate Apprentice Trainee',
     period: 'March 2019 – March 2020',
-    points: ['Completed graduate apprentice training.'],
+    points: [
+      'Completed graduate apprentice training.',
+    ],
   },
 ]
+
 
 export const education = {
   degree: 'B.Tech — Mechanical Engineering',

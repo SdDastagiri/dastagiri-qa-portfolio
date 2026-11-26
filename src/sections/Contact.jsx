@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <section className="section contact-section" id="contact">
       <div className="container">
-        <SectionHeading eyebrow="06 / GET IN TOUCH" title="Let’s build quality into what’s next." description="If you’re hiring for QA Automation or SDET opportunities, I’d be glad to connect." centered />
+        <SectionHeading eyebrow="GET IN TOUCH" title="Let’s build quality into what’s next." description="If you’re hiring for QA Automation or SDET opportunities, I’d be glad to connect." centered />
         <div className="contact-panel">
           <div>
             <span className="eyebrow">START A CONVERSATION</span>

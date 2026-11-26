@@ -69,7 +69,7 @@ export default function Hero() {
           <div className="profile-float-chip profile-chip-intent">ENGINEERING WITH INTENT <span aria-hidden="true">↘</span></div>
         </div>
       </div>
-      <div className="hero-bottom container"><span>BASED IN INDIA</span><span className="hero-bottom-line" /><span>QUALITY · PRECISION · RELIABILITY</span></div>
+      <div className="hero-bottom container"><span>QUALITY · PRECISION · RELIABILITY</span></div>
 
       {photoOpen && (
         <div className="profile-lightbox" role="presentation" onClick={() => setPhotoOpen(false)}>

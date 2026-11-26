@@ -1,26 +1,115 @@
-import { Crosshair, Gauge, GitBranch, ShieldCheck } from 'lucide-react'
+
+import {
+  ShieldCheck,
+  GitBranch,
+  Crosshair,
+  Gauge,
+} from 'lucide-react'
+
 import SectionHeading from '../components/SectionHeading'
 
 const principles = [
-  { icon: ShieldCheck, title: 'Quality by design', text: 'Think beyond happy paths and validate behaviour where it matters most.' },
-  { icon: GitBranch, title: 'End-to-end thinking', text: 'Connect UI, API, and backend checks to understand complete user workflows.' },
-  { icon: Crosshair, title: 'Practical automation', text: 'Build maintainable coverage that supports fast, confident releases.' },
-  { icon: Gauge, title: 'Continuous improvement', text: 'Use clear reporting and defect investigation to strengthen product quality.' },
+  {
+    icon: ShieldCheck,
+    title: 'Quality by Design',
+    description:
+      'Identify risks early and validate critical business requirements across application workflows.',
+  },
+  {
+    icon: GitBranch,
+    title: 'End-to-End Thinking',
+    description:
+      'Connect UI, API, and backend validation to verify complete business scenarios.',
+  },
+  {
+    icon: Crosshair,
+    title: 'Practical Automation',
+    description:
+      'Build maintainable automation coverage for functional, regression, and API testing.',
+  },
+  {
+    icon: Gauge,
+    title: 'Continuous Improvement',
+    description:
+      'Investigate defects, analyze failures, and strengthen test coverage for reliable releases.',
+  },
 ]
 
 export default function About() {
   return (
-    <section className="section section-alt" id="about">
+    <section id="about" className="section section-alt">
       <div className="container">
-        <SectionHeading eyebrow="01 / ABOUT ME" title="Quality is more than a test result." description="A thoughtful approach to testing, automation, and dependable software delivery." />
+
+        <SectionHeading
+          eyebrow="ABOUT ME"
+          title="Quality is more than a test result."
+          description="A thoughtful approach to testing, automation, and dependable software delivery."
+        />
+
         <div className="about-layout">
+
+          {/* Professional Introduction */}
           <div className="about-copy">
-            <p className="about-lead">I’m a QA Automation Engineer with <strong>4+ years of experience</strong> across web, API, mobile, PWA, and POS applications.</p>
-            <p>My core toolkit includes Java, Selenium WebDriver, REST Assured, Appium, TestNG, Maven, JavaScript, and Node.js. I’ve worked across UI and API automation, functional and regression testing, backend validation, test case design, defect investigation, and framework maintenance.</p>
-            <p>I enjoy understanding how systems behave end to end, identifying meaningful risk, and building automation that gives teams useful feedback — not just more test scripts.</p>
-            <div className="about-note"><span className="note-mark">“</span><span>My focus: reliable coverage, clear communication, and quality that supports every release.</span></div>
+
+            <p className="about-lead">
+              I'm a QA Automation Engineer with{' '}
+              <strong>4+ years of experience</strong> in software
+              testing and automation across Web, API, Mobile,
+              PWA, and POS applications.
+            </p>
+
+            <p>
+              My experience includes developing and maintaining
+              automation solutions, validating complex business
+              workflows, performing end-to-end testing, and
+              investigating defects across application and
+              backend layers.
+            </p>
+
+            <p>
+              I believe effective quality engineering goes beyond
+              executing test cases. It involves understanding
+              business requirements, identifying risks early,
+              building meaningful automation coverage, and
+              supporting reliable software releases.
+            </p>
+
+            {/* My Approach */}
+            <div className="about-note">
+              <span className="note-mark">“</span>
+              <div>
+                <strong>MY APPROACH</strong>
+                <p>
+                  Reliable coverage. Clear communication.
+                  Quality in every release.
+                </p>
+              </div>
+            </div>
+
           </div>
-          <div className="principle-grid">{principles.map(({ icon: Icon, title, text }) => <article className="principle-card" key={title}><Icon size={20} /><h3>{title}</h3><p>{text}</p></article>)}</div>
+
+          {/* Engineering Principles */}
+          <div className="principle-grid">
+
+            {principles.map((item) => {
+              const Icon = item.icon
+
+              return (
+                <article
+                  className="principle-card"
+                  key={item.title}
+                >
+                  <Icon size={23} strokeWidth={1.8} />
+
+                  <h3>{item.title}</h3>
+
+                  <p>{item.description}</p>
+                </article>
+              )
+            })}
+
+          </div>
+
         </div>
       </div>
     </section>

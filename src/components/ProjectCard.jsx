@@ -10,6 +10,25 @@ export default function ProjectCard({ project }) {
         <span className="mini-label">CONTRIBUTIONS</span>
         <ul>{project.contributions.map(item => <li key={item}><Check size={15} />{item}</li>)}</ul>
       </div>
+
+      {project.links?.length > 0 && (
+        <div className="project-links">
+          {project.links.map((link) => (
+            <a
+              key={link.label}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link"
+              aria-label={`Open ${link.label} in a new tab`}
+            >
+              {link.label}
+              <span aria-hidden="true"> ↗</span>
+            </a>
+          ))}
+        </div>
+      )}
+
       <div className="project-stack">{project.stack.map(item => <span key={item}>{item}</span>)}</div>
     </article>
   )
