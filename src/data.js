@@ -10,6 +10,7 @@ export const profile = {
   resume: 'https://drive.google.com/file/d/1ocw2KyjzMh9NTCzZOw7IKTRkZbN0gWZS/view?usp=sharing',
 }
 
+
 export const achievements = [
   {
     value: '4+',
@@ -18,20 +19,16 @@ export const achievements = [
   },
   {
     value: '31+',
-    label: 'POS-SDK offer types',
-    detail: 'Business-rule coverage',
+    label: 'TCB Offer Types',
+    detail: 'Supported and validated through POS-SDK',
   },
   {
     value: '500+',
-    label: 'Test cases',
-    detail: 'Created and contributed to',
-  },
-  {
-    value: '300+',
-    label: 'Defects reported',
-    detail: 'Across testing activities',
-  },
+    label: 'POS-SDK Test Cases',
+    detail: 'Created and executed for POS validation',
+  }
 ]
+
 
 export const skillGroups = [
   {

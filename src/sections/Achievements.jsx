@@ -5,6 +5,7 @@ const customerQualityPoints = [
   { icon: Search, title: 'Issue investigation', description: 'Reproduce reported issues and narrow down the failure area.' },
   { icon: Database, title: 'Backend validation', description: 'Use AWS CloudWatch logs and DynamoDB data to support analysis.' },
   { icon: MessageSquareText, title: 'Clear follow-through', description: 'Share findings with the team and support troubleshooting through resolution.' },
+  { icon: Search, title: 'POS-SDK Validation', description: 'Validated 31+ TCB offer types through comprehensive test scenarios.', }
 ]
 
 export default function Achievements() {
@@ -29,9 +30,11 @@ export default function Achievements() {
               <span className="customer-quality-eyebrow">BEYOND TEST EXECUTION</span>
               <h2>Customer-Centric Quality</h2>
               <p>
-                I investigate customer-reported issues by reproducing scenarios, reviewing application
-                logs, and validating backend data. I work with the team to identify likely root causes
-                and support clear, timely resolution.
+                I focus on building confidence in digital coupon validation
+                and platform reliability through comprehensive testing.
+                I investigate customer-reported issues, validate backend data,
+                and collaborate with development teams to identify defects,
+                verify fixes, and improve product quality.
               </p>
             </div>
           </div>

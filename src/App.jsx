@@ -39,7 +39,7 @@ export default function App() {
         <Education />
         <Contact />
       </main>
-      <footer className="footer"><div className="container footer-inner"><a className="brand" href="#home"><span className="brand-mark">SD</span><span>Sayyad Dastagiri<span className="brand-dot">.</span></span></a><p>Designed with purpose. Built around quality.</p><span>© {new Date().getFullYear()} {profile.name}. All rights reserved.</span></div></footer>
+      <footer className="footer"><div className="container footer-inner"><a className="brand" href="#home"><span className="brand-mark">SD</span><span>Sayyad Dastagiri<span className="brand-dot">.</span></span></a><p>Designed & Developed with passion by <strong>Sayyad Dastagiri.</strong></p><span>© {new Date().getFullYear()} {profile.name}. All rights reserved.</span></div></footer>
       <a className="back-top" href="#home" aria-label="Back to top"><ArrowUp size={17} /></a>
       <PortfolioChatbot />
     </>

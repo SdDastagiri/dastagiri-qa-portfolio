@@ -29,7 +29,7 @@ export default function Hero() {
           <div className="availability"><span className="status-dot" /> QA ENGINEERING · AUTOMATION · QUALITY</div>
           <p className="hero-intro">Hello, I’m</p>
           <h1>Sayyad <span>Dastagiri</span><i>.</i></h1>
-          <h2>QA Automation Engineer</h2>
+          <h2>QA Automation Engineer / Freelancer </h2>
           <p className="hero-statement">Building confidence in every release.</p>
           <p className="hero-description">I bring 4+ years of experience testing and automating web, API, mobile, PWA, and POS applications — with a focus on reliable workflows and meaningful quality coverage.</p>
           <div className="hero-actions">

@@ -642,17 +642,20 @@ button {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr)
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  align-items: stretch;
 }
 
 .stat-card {
+  min-width: 0;
   padding: 12px 25px;
-  border-right: 1px solid var(--line);
-  position: relative
+  border-left: 1px solid var(--line);
+  position: relative;
 }
 
 .stat-card:last-child {
-  border: 0
+  border-right: 1px solid var(--line);
 }
 
 .stat-index {
@@ -1294,20 +1297,25 @@ button {
   }
 
   .stats-grid {
-    grid-template-columns: 1fr 1fr;
-    row-gap: 18px
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 18px;
   }
 
   .stat-card {
-    padding: 12px 15px
+    padding: 12px 15px;
   }
 
-  .stat-card:nth-child(2) {
-    border-right: 0
+  .stat-card:nth-child(odd) {
+    border-left: 1px solid var(--line);
+  }
+
+  .stat-card:nth-child(even) {
+    border-left: 0;
+    border-right: 1px solid var(--line);
   }
 
   .stat-card strong {
-    font-size: 32px
+    font-size: 32px;
   }
 
   .skills-grid {
@@ -2727,4 +2735,151 @@ button {
 .chatbot-message-content a {
   color: #54d8ed;
   text-decoration: underline;
+}
+/* =========================================
+   CHATBOT GREETING POPUP
+========================================= */
+
+.chatbot-greeting {
+    position: fixed;
+    right: 94px;
+    bottom: 34px;
+    z-index: 99;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 17px;
+    border: 1px solid rgba(84, 216, 237, 0.35);
+    border-radius: 14px;
+
+    background: #101d30;
+    color: #f1f5f9;
+
+    text-align: left;
+    cursor: pointer;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+
+    animation: greeting-appear 0.7s ease both,
+               greeting-float 3s ease-in-out 0.7s infinite;
+}
+
+.chatbot-greeting span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.chatbot-greeting strong {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.chatbot-greeting small {
+    font-size: 11px;
+    color: #9aabc2;
+}
+
+.chatbot-greeting-wave {
+    display: inline-block;
+    font-size: 27px;
+    transform-origin: 70% 70%;
+    animation: greeting-wave 1.8s ease-in-out infinite;
+}
+
+@keyframes greeting-appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes greeting-float {
+    0%, 100% {
+        translate: 0 0;
+    }
+    50% {
+        translate: 0 -5px;
+    }
+}
+
+@keyframes greeting-wave {
+    0%, 60%, 100% {
+        transform: rotate(0deg);
+    }
+    10%, 30% {
+        transform: rotate(18deg);
+    }
+    20%, 40% {
+        transform: rotate(-10deg);
+    }
+}
+
+.chatbot-greeting:hover {
+    border-color: #54d8ed;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+    .chatbot-greeting {
+        right: 82px;
+        bottom: 27px;
+        padding: 10px 12px;
+        gap: 8px;
+    }
+
+    .chatbot-greeting-wave {
+        font-size: 23px;
+    }
+
+    .chatbot-greeting strong {
+        font-size: 12px;
+    }
+
+    .chatbot-greeting small {
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chatbot-greeting,
+    .chatbot-greeting-wave {
+        animation: none;
+    }
+}
+.chatbot-greeting {
+    position: fixed;
+    right: 94px;
+    bottom: 78px;
+    z-index: 99;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 11px 15px;
+    border: 1px solid rgba(84, 216, 237, 0.4);
+    border-radius: 14px;
+
+    background: #101d30;
+    color: #f1f5f9;
+    text-align: left;
+    cursor: pointer;
+
+    box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3),
+                0 0 12px rgba(84, 216, 237, 0.07);
+
+    animation: greeting-appear 0.7s ease both,
+               greeting-float 3s ease-in-out 0.7s infinite;
+}.chatbot-greeting-wave {
+    display: inline-block;
+    font-size: 29px;
+    transform-origin: 70% 70%;
+    animation: greeting-wave 1.8s ease-in-out infinite;
 }

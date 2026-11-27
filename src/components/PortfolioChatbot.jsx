@@ -115,16 +115,31 @@ export default function PortfolioChatbot() {
         <div className="portfolio-chatbot">
 
             {/* Floating launcher */}
+            {/* Floating launcher and greeting */}
             {!isOpen && (
-                <button
-                    className="chatbot-launcher"
-                    onClick={() => setIsOpen(true)}
-                    aria-label="Open AI portfolio assistant"
-                    aria-expanded={isOpen}
-                >
-                    <MessageCircle size={25} />
-                    <span className="chatbot-launcher-dot" />
-                </button>
+                <>
+                    <button
+                        className="chatbot-greeting"
+                        onClick={() => setIsOpen(true)}
+                        aria-label="Chat with Dastagiri AI"
+                    >
+                        <span className="chatbot-greeting-wave">👋</span>
+                        <span>
+                            <strong>Hi there!</strong>
+                            <small>Want to know about Dastagiri?</small>
+                        </span>
+                    </button>
+
+                    <button
+                        className="chatbot-launcher"
+                        onClick={() => setIsOpen(true)}
+                        aria-label="Open AI portfolio assistant"
+                        aria-expanded={isOpen}
+                    >
+                        <MessageCircle size={25} />
+                        <span className="chatbot-launcher-dot" />
+                    </button>
+                </>
             )}
 
             {/* Chat window */}
@@ -176,8 +191,8 @@ export default function PortfolioChatbot() {
                         {messages.map((message, index) => (
                             <div
                                 className={`chatbot-message ${message.role === 'user'
-                                        ? 'chatbot-message-user'
-                                        : 'chatbot-message-assistant'
+                                    ? 'chatbot-message-user'
+                                    : 'chatbot-message-assistant'
                                     }`}
                                 key={index}
                             >
