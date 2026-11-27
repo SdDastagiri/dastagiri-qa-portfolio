@@ -240,20 +240,39 @@ export const projects = [
   },
 ]
 
-
 export const experience = [
   {
     company: 'The Coupon Bureau (TCB)',
     role: 'Quality Assurance Engineer',
     period: 'March 2024 – September 2026',
-    points: [
-      'Developed and maintained API automation suites using Java and REST Assured.',
-      'Executed scheduled daily sanity testing covering 75+ critical use cases using Cron jobs and Shell scripts.',
-      'Performed comprehensive regression testing covering 1,100+ use cases before production releases.',
-      'Monitored TCB dashboards, including coupon deposits and redemptions, to identify data inconsistencies.',
-      'Performed backend data validation using DynamoDB and OpenSearch and investigated application issues through AWS CloudWatch.',
-      'Managed test cases in TestRail, tracked defects using Monday.com, and supported release validation.',
-      'Investigated customer-reported issues and collaborated with development teams on resolution.',
+
+    projects: [
+      {
+        name: 'The Coupon Bureau (TCB) Platform',
+        period: 'March 2024 – September 2026',
+        points: [
+          'Developed and maintained API automation suites using Java and REST Assured.',
+          'Executed scheduled daily sanity testing covering 75+ critical use cases using Cron jobs and Shell scripts.',
+          'Performed comprehensive regression testing covering 1,100+ use cases before production releases.',
+          'Monitored TCB dashboards, including coupon deposits and redemptions, to identify data inconsistencies.',
+          'Performed backend data validation using DynamoDB and OpenSearch and investigated application issues through AWS CloudWatch.',
+          'Managed test cases in TestRail, tracked defects using Monday.com, and supported release validation.',
+          'Investigated customer-reported issues and collaborated with development teams on resolution.',
+        ],
+      },
+      {
+        name: 'POS-SDK',
+        period: 'December 2024 – September 2026',
+        points: [
+          'Designed and executed test scenarios covering 31+ supported TCB offer types.',
+          'Created and maintained test data for different basket combinations and coupon configurations.',
+          'Validated basket items and serialized coupons against expected validation results.',
+          'Developed and executed JavaScript and Java-based test scenarios for POS validation workflows.',
+          'Performed Excel-based input/output validation and analyzed HTML automation reports.',
+          'Tested coupon eligibility, redemption, and rollback scenarios.',
+          'Identified business-rule defects, verified fixes, and supported regression testing.',
+        ],
+      },
     ],
   },
   {
@@ -292,7 +311,6 @@ export const experience = [
     ],
   },
 ]
-
 
 export const education = {
   degree: 'B.Tech — Mechanical Engineering',
