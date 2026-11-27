@@ -9,6 +9,10 @@ import {
     User,
     LoaderCircle,
     RotateCcw,
+    Volume2,
+    Pause,
+    Play,
+    Square,
 } from 'lucide-react'
 
 const suggestions = [
@@ -30,9 +34,83 @@ export default function PortfolioChatbot() {
     const [messages, setMessages] = useState([welcomeMessage])
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
+    const [usedSuggestions, setUsedSuggestions] = useState([])
 
     const messagesEndRef = useRef(null)
     const inputRef = useRef(null)
+    const [speakingIndex, setSpeakingIndex] = useState(null)
+    const [speechPaused, setSpeechPaused] = useState(false)
+
+    useEffect(() => {
+        return () => {
+            window.speechSynthesis?.cancel()
+        }
+    }, [])
+
+    const stopSpeaking = () => {
+        window.speechSynthesis?.cancel()
+        setSpeakingIndex(null)
+        setSpeechPaused(false)
+    }
+
+    const toggleSpeech = (content, index) => {
+        if (!('speechSynthesis' in window)) {
+            alert('Text-to-speech is not supported by this browser.')
+            return
+        }
+
+        const speech = window.speechSynthesis
+
+        if (speakingIndex === index && speech.speaking) {
+            if (speechPaused) {
+                speech.resume()
+                setSpeechPaused(false)
+            } else {
+                speech.pause()
+                setSpeechPaused(true)
+            }
+            return
+        }
+
+        speech.cancel()
+        setSpeakingIndex(index)
+        setSpeechPaused(false)
+
+        const plainText = content
+            .replace(/[#*_`>\[\]()]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim()
+
+        const utterance = new SpeechSynthesisUtterance(plainText)
+
+        const voices = window.speechSynthesis.getVoices()
+
+        const femaleVoice = voices.find((voice) =>
+            /female|zira|samantha|karen|susan|aria|jenny/i.test(voice.name)
+            && voice.lang.startsWith('en')
+        )
+
+        utterance.voice = femaleVoice || voices.find(
+            (voice) => voice.lang === 'en-IN'
+        ) || voices.find(
+            (voice) => voice.lang.startsWith('en')
+        )
+
+        utterance.lang = utterance.voice?.lang || 'en-IN'
+        utterance.rate = 0.95
+        utterance.pitch = 1.12
+
+        utterance.onend = () => {
+            setSpeakingIndex(null)
+            setSpeechPaused(false)
+        }
+        utterance.onerror = () => {
+            setSpeakingIndex(null)
+            setSpeechPaused(false)
+        }
+
+        speech.speak(utterance)
+    }
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({
@@ -107,8 +185,19 @@ export default function PortfolioChatbot() {
     }
 
     const resetChat = () => {
+        stopSpeaking()
         setMessages([welcomeMessage])
         setInput('')
+        setUsedSuggestions([])
+    }
+
+    const remainingSuggestions = suggestions.filter(
+        (suggestion) => !usedSuggestions.includes(suggestion)
+    )
+
+    const handleSuggestionClick = (suggestion) => {
+        setUsedSuggestions((previous) => [...previous, suggestion])
+        sendMessage(suggestion)
     }
 
     return (
@@ -206,7 +295,49 @@ export default function PortfolioChatbot() {
 
                                 <div className="chatbot-message-content">
                                     {message.role === 'assistant' ? (
-                                        <ReactMarkdown>{message.content}</ReactMarkdown>
+                                        <>
+                                            <ReactMarkdown>{message.content}</ReactMarkdown>
+                                            <div className="chatbot-speech-controls">
+                                                <button
+                                                    type="button"
+                                                    className="chatbot-speech-button"
+                                                    onClick={() => toggleSpeech(message.content, index)}
+                                                    aria-label={
+                                                        speakingIndex === index
+                                                            ? speechPaused ? 'Resume answer' : 'Pause answer'
+                                                            : 'Listen to answer'
+                                                    }
+                                                    title={
+                                                        speakingIndex === index
+                                                            ? speechPaused ? 'Resume' : 'Pause'
+                                                            : 'Listen to answer'
+                                                    }
+                                                >
+                                                    {speakingIndex === index
+                                                        ? speechPaused
+                                                            ? <Play size={15} />
+                                                            : <Pause size={15} />
+                                                        : <Volume2 size={16} />}
+                                                    <span>
+                                                        {speakingIndex === index
+                                                            ? speechPaused ? 'Resume' : 'Pause'
+                                                            : 'Listen'}
+                                                    </span>
+                                                </button>
+                                                {speakingIndex === index && (
+                                                    <button
+                                                        type="button"
+                                                        className="chatbot-speech-button"
+                                                        onClick={stopSpeaking}
+                                                        aria-label="Stop speaking"
+                                                        title="Stop"
+                                                    >
+                                                        <Square size={13} />
+                                                        <span>Stop</span>
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </>
                                     ) : (
                                         message.content
                                     )}
@@ -214,19 +345,28 @@ export default function PortfolioChatbot() {
                             </div>
                         ))}
 
-                        {messages.length === 1 && (
+                        {!loading && remainingSuggestions.length > 0 && (
                             <div className="chatbot-suggestions">
-                                <span>QUICK QUESTIONS</span>
+                                <span>
+                                    {messages.length === 1 ? 'QUICK QUESTIONS' : 'YOU CAN ALSO ASK'}
+                                </span>
 
-                                {suggestions.map((suggestion) => (
+                                {remainingSuggestions.map((suggestion) => (
                                     <button
                                         key={suggestion}
-                                        onClick={() => sendMessage(suggestion)}
+                                        onClick={() => handleSuggestionClick(suggestion)}
                                         disabled={loading}
                                     >
                                         {suggestion}
                                     </button>
                                 ))}
+                            </div>
+                        )}
+
+                        {!loading && messages.length > 1 && remainingSuggestions.length === 0 && (
+                            <div className="chatbot-suggestions chatbot-suggestions-finished">
+                                <span>WHAT ELSE WOULD YOU LIKE TO ASK?</span>
+                                <p>Type any question below — I'm happy to help.</p>
                             </div>
                         )}
 

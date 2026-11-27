@@ -18,9 +18,9 @@ Experience: 4+ years
 
 TECHNICAL SKILLS:
 Java, JavaScript, Node.js, Selenium WebDriver, TestNG, Maven,
-REST Assured, Postman, Appium, Android, iOS, Cypress,
+REST Assured, Postman, Appium, Android, iOS, 
 AWS CloudWatch, DynamoDB, OpenSearch, Git, GitHub,
-TestRail, JIRA, Allure, Agile, SDLC and STLC.
+TestRail, Monday.com, JIRA, Allure, Agile, SDLC and STLC.
 
 PROFESSIONAL EXPERIENCE:
 The Coupon Bureau:
