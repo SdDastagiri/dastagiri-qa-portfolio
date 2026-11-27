@@ -13,6 +13,8 @@ import {
     Pause,
     Play,
     Square,
+    Mic,
+    MicOff,
 } from 'lucide-react'
 
 const suggestions = [
@@ -34,10 +36,11 @@ export default function PortfolioChatbot() {
     const [messages, setMessages] = useState([welcomeMessage])
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
-    const [usedSuggestions, setUsedSuggestions] = useState([])
 
     const messagesEndRef = useRef(null)
     const inputRef = useRef(null)
+    const recognitionRef = useRef(null)
+    const [isListening, setIsListening] = useState(false)
     const [speakingIndex, setSpeakingIndex] = useState(null)
     const [speechPaused, setSpeechPaused] = useState(false)
 
@@ -124,6 +127,51 @@ export default function PortfolioChatbot() {
         }
     }, [isOpen])
 
+    const toggleVoiceInput = () => {
+        const SpeechRecognition =
+            window.SpeechRecognition || window.webkitSpeechRecognition
+
+        if (!SpeechRecognition) {
+            alert('Voice input is not supported in this browser. Please use Google Chrome.')
+            return
+        }
+
+        if (isListening) {
+            recognitionRef.current?.stop()
+            setIsListening(false)
+            return
+        }
+
+        const recognition = new SpeechRecognition()
+        recognitionRef.current = recognition
+        recognition.lang = 'en-IN'
+        recognition.continuous = false
+        recognition.interimResults = true
+
+        recognition.onstart = () => setIsListening(true)
+
+        recognition.onresult = (event) => {
+            const transcript = Array.from(event.results)
+                .map((result) => result[0].transcript)
+                .join(' ')
+            setInput(transcript)
+        }
+
+        recognition.onerror = (event) => {
+            setIsListening(false)
+            if (event.error !== 'no-speech' && event.error !== 'aborted') {
+                alert('Could not capture your voice. Please check microphone permission and try again.')
+            }
+        }
+
+        recognition.onend = () => {
+            setIsListening(false)
+            recognitionRef.current = null
+        }
+
+        recognition.start()
+    }
+
     const sendMessage = async (text = input) => {
         const question = text.trim()
 
@@ -186,18 +234,10 @@ export default function PortfolioChatbot() {
 
     const resetChat = () => {
         stopSpeaking()
+        recognitionRef.current?.stop()
+        setIsListening(false)
         setMessages([welcomeMessage])
         setInput('')
-        setUsedSuggestions([])
-    }
-
-    const remainingSuggestions = suggestions.filter(
-        (suggestion) => !usedSuggestions.includes(suggestion)
-    )
-
-    const handleSuggestionClick = (suggestion) => {
-        setUsedSuggestions((previous) => [...previous, suggestion])
-        sendMessage(suggestion)
     }
 
     return (
@@ -262,7 +302,12 @@ export default function PortfolioChatbot() {
 
                         <button
                             className="chatbot-icon-button"
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => {
+                                recognitionRef.current?.stop()
+                                setIsListening(false)
+                                stopSpeaking()
+                                setIsOpen(false)
+                            }}
                             aria-label="Close chatbot"
                         >
                             <X size={20} />
@@ -345,28 +390,19 @@ export default function PortfolioChatbot() {
                             </div>
                         ))}
 
-                        {!loading && remainingSuggestions.length > 0 && (
+                        {messages.length === 1 && (
                             <div className="chatbot-suggestions">
-                                <span>
-                                    {messages.length === 1 ? 'QUICK QUESTIONS' : 'YOU CAN ALSO ASK'}
-                                </span>
+                                <span>QUICK QUESTIONS</span>
 
-                                {remainingSuggestions.map((suggestion) => (
+                                {suggestions.map((suggestion) => (
                                     <button
                                         key={suggestion}
-                                        onClick={() => handleSuggestionClick(suggestion)}
+                                        onClick={() => sendMessage(suggestion)}
                                         disabled={loading}
                                     >
                                         {suggestion}
                                     </button>
                                 ))}
-                            </div>
-                        )}
-
-                        {!loading && messages.length > 1 && remainingSuggestions.length === 0 && (
-                            <div className="chatbot-suggestions chatbot-suggestions-finished">
-                                <span>WHAT ELSE WOULD YOU LIKE TO ASK?</span>
-                                <p>Type any question below — I'm happy to help.</p>
                             </div>
                         )}
 
@@ -392,11 +428,22 @@ export default function PortfolioChatbot() {
                             ref={inputRef}
                             value={input}
                             onChange={(event) => setInput(event.target.value)}
-                            placeholder="Ask me anything..."
+                            placeholder={isListening ? 'Listening... speak now' : 'Ask me anything...'}
                             maxLength={1000}
                             disabled={loading}
                             aria-label="Type your message"
                         />
+
+                        <button
+                            type="button"
+                            className={`chatbot-mic-button ${isListening ? 'is-listening' : ''}`}
+                            onClick={toggleVoiceInput}
+                            disabled={loading}
+                            aria-label={isListening ? 'Stop voice input' : 'Start voice input'}
+                            title={isListening ? 'Stop recording' : 'Ask using your voice'}
+                        >
+                            {isListening ? <MicOff size={18} /> : <Mic size={18} />}
+                        </button>
 
                         <button
                             type="submit"
