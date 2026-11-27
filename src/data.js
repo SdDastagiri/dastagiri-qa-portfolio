@@ -7,7 +7,7 @@ export const profile = {
   phoneDisplay: '+91 9398512478',
   linkedin: 'https://www.linkedin.com/in/sayyad-dastagiri/',
   github: 'https://github.com/SdDastagiri',
-  resume: 'https://drive.google.com/file/d/1ocw2KyjzMh9NTCzZOw7IKTRkZbN0gWZS/view?usp=sharing',
+  resume: 'https://drive.google.com/file/d/1fJka8eZItn268FlQ5bKyMu7iHkOGhTES/view?usp=sharing',
 }
 
 

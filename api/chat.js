@@ -51,7 +51,7 @@ CONTACT:
 LinkedIn: https://www.linkedin.com/in/sayyad-dastagiri/
 GitHub: https://github.com/SdDastagiri
 Email: sayyaddastagirisd@gmail.com
-Resume: https://drive.google.com/file/d/1ocw2KyjzMh9NTCzZOw7IKTRkZbN0gWZS/view?usp=sharing
+Resume: https://drive.google.com/file/d/1fJka8eZItn268FlQ5bKyMu7iHkOGhTES/view?usp=sharing
 
 RESPONSE RULES:
 - Always use a professional, friendly and confident tone.
